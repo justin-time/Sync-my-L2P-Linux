@@ -1,0 +1,6 @@
+sync-my-l2p (2.0.0-0~beta1~ppa1) trusty; urgency=low
+
+  * First official beta release of sync-my-l2p 2.0.0
+
+ -- Stefan Ahlers <stef.ahlers@t-online.de>  Tue, 24 Feb 2015 13:35:00 +0100
+

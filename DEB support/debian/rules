@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+#export DH_VERBOSE=1
+
+%:
+	dh ${@} --parallel
+
+override_dh_auto_install:
+
+
+override_dh_install:
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/sync-my-l2p/usr
+
+override_dh_builddeb:
+	dh_builddeb -- -Zxz -z9
