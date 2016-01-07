@@ -1,5 +1,5 @@
 # 
-# spec file for package owncloud
+# spec file for package Sync-my-L2P
 #
 # Copyright (c) 2015 Stefan Ahlers <stef.ahlers@t-online.de>
 #
@@ -17,8 +17,8 @@
 
 Summary:           Sync-my-L²P – Synchronisiere deinen PC mit dem L²P der RWTH Aachen
 Name:              sync-my-l2p
-Version:           2.0.0~beta1
-Release:           1%{?dist}
+Version:           2.2.0
+Release:           2%{?dist}
 License:           LGPL-3.0
 
 Source0:        sync-my-l2p.tar.gz
@@ -32,7 +32,7 @@ BuildRequires:       openssl-devel qt5-qtbase-devel desktop-file-utils
 
 
 %if 0%{?suse_version}
-BuildRequires:       libopenssl-devel libqt5-qtbase-devel libudev-mini1 libqt5-qttools-devel update-desktop-files
+BuildRequires:       libopenssl-devel libqt5-qtbase-devel libudev-mini1 libqt5-qttools-devel update-desktop-files hicolor-icon-theme
 %endif
 
 %description
@@ -61,6 +61,16 @@ rm -rf "$RPM_BUILD_ROOT"
 %files
 %defattr(-,root,root)
 %{_bindir}/*
+%if 0%{?suse_version}
+%dir %{_datarootdir}/icons/hicolor/16x16
+%dir %{_datarootdir}/icons/hicolor/16x16/apps
+%dir %{_datarootdir}/icons/hicolor/32x32
+%dir %{_datarootdir}/icons/hicolor/32x32/apps
+%dir %{_datarootdir}/icons/hicolor/48x48
+%dir %{_datarootdir}/icons/hicolor/48x48/apps
+%dir %{_datarootdir}/icons/hicolor/128x128
+%dir %{_datarootdir}/icons/hicolor/128x128/apps
+%endif
 %{_datarootdir}/applications/Sync-my-L2P.desktop
 %{_datarootdir}/icons/hicolor/16x16/apps/sync-my-L2P.png
 %{_datarootdir}/icons/hicolor/32x32/apps/sync-my-L2P.png
@@ -70,6 +80,7 @@ rm -rf "$RPM_BUILD_ROOT"
 %post
 %if 0%{?suse_version}
 %icon_theme_cache_post hicolor
+%desktop_database_post
 %else
 /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
 %endif
@@ -77,6 +88,7 @@ rm -rf "$RPM_BUILD_ROOT"
 %postun
 %if 0%{?suse_version}
 %icon_theme_cache_postun hicolor
+%desktop_database_postun
 %else
 if [ $1 -eq 0 ] ; then
     /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null
