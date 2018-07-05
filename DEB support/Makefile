@@ -25,7 +25,7 @@ install:
 	$(INSTALL_DIR) $(DESTDIR)$(bindir)
 	$(INSTALL_DIR) $(DESTDIR)$(dataroot)/applications
 	$(INSTALL_DIR) $(DESTDIR)$(dataroot)/icons
-	$(INSTALL_PROGRAM) Sync-my-L2P           $(DESTDIR)$(bindir)
+	$(INSTALL_PROGRAM) bin/Sync-my-L2P           $(DESTDIR)$(bindir)
 	$(INSTALL_FILE) linux/Sync-my-L2P.desktop $(DESTDIR)$(dataroot)/applications
 	$(CP) linux/hicolor    $(DESTDIR)$(dataroot)/icons
 
